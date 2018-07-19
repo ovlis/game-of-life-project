@@ -1,8 +1,12 @@
 window.GOL.CreateGrid = (function(){
     
     function createGrid() {
+
         //enable play button
         document.getElementById('play').disabled = false;
+
+        //clear interval and event listener
+        clearInterval(GOL.playCodeID);
 
         var rows = document.getElementById('rowInput').value;
         var cols =  document.getElementById('colInput').value;
@@ -14,7 +18,13 @@ window.GOL.CreateGrid = (function(){
        var cellsArray = GOL.CellsArrayInit.init(rows, cols);
 
         //play
-        document.getElementById('play').addEventListener('click',function(){setInterval(GOL.PlayCode.init.bind(null,rows, cols),500);});
+        document.getElementById('play').addEventListener('click',playEventListener);
+
+        function playEventListener () {
+            document.getElementById('play').removeEventListener('click',playEventListener);
+            var playCodeInitBinded = GOL.PlayCode.init.bind(null,rows, cols);
+            GOL.playCodeID = setInterval(playCodeInitBinded,500);
+        }
 
     }
 

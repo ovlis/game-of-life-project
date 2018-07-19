@@ -5,7 +5,7 @@ window.GOL.PlayCode = (function(){
     //whet play button does!
     function playCode(rows, cols) {
         
-        cellsArray = GOL.cellsArray;
+        var cellsArray = GOL.cellsArray;
         
         //Copy cellsArray by value
         var newCellsArray = [];

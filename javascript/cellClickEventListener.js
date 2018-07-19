@@ -8,7 +8,6 @@ window.GOL.CellClickEventListener = (function(){
         
         if (e.target.style.backgroundColor === 'white') {
             e.target.style.backgroundColor = '#0069D9';
-            console.log(window.GOL.cellsArray);
             window.GOL.cellsArray[clickedRow][clickedCol] = true;
         }
         else {

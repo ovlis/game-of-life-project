@@ -1,8 +1,9 @@
 window.GOL.CellsArrayInit = (function(){
 
-    var cellsArray = [];
-
     function cellsArrayInit(rows, cols) {
+        
+        var cellsArray = [];
+
         for (let row=0; row < rows; row+=1){
             cellsArray.push(new Array(cols));
         }

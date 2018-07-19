@@ -1,6 +1,9 @@
 window.GOL.GridUI = (function(){
     
     function gridUI (rows,cols) {
+
+        document.getElementById('gridUI').innerHTML = '';
+
         for ( let row=0; row<rows; row+=1) {
             let rowUI = document.createElement('tr')
             rowUI.setAttribute('class','rowUI');
