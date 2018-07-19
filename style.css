@@ -1,0 +1,72 @@
+.inputsContainer {
+    width: 600px;
+    margin: 50px auto;
+}
+
+.inputRows {
+    width: 25%;
+    float:left;
+}
+
+.inputRows label{
+    float:left;
+    width: 30%;
+}
+
+.inputRows input{
+    float:left;
+    width: 70%;
+    height: 30px;
+}
+
+.inputCols {
+    width: 25%;
+    margin-left: 20px;
+    float:left;
+}
+
+.inputCols label{
+    float:left;
+    width: 30%;
+}
+
+.inputCols input{
+    float:left;
+    width: 70%;
+    height: 30px;
+}
+
+.btn-primary {
+    height: 30px;
+    padding: 0px 20px 0px 20px;
+    margin-left: 20px;
+}
+
+.btn-success {
+    height: 30px;
+    padding: 0px 20px 0px 20px;
+    margin-left: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.gameTitle {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.gameGridUI {
+    margin: 0 auto;
+}
+
+.colUI {
+    border: gray 1px solid;
+    width: 50px;
+    height: 40px;
+}
+
+.colUI:hover {
+    box-shadow: 0px 0px 1px 1px #0069D9; 
+}

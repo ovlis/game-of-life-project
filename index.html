@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<div class="inputsContainer form-group">
+    <div class="inputRows">
+        <label>Rows: </label>
+        <input type="number" class="form-control" id="rowInput">
+    </div>
+    <div class="inputCols form-group">
+        <label>Cols: </label>
+        <input type="number" class="form-control" id="colInput">
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-primary" id="createGrid">Create Grid</button>
+        <button type="button" class="btn btn-success" id="play" disabled>Play</button>
+    </div>
+    
+</div>
+
+<div class="clear">
+
+</div>
+
+<!-- grid -->
+<table class="gameGridUI">
+    <h3 class="gameTitle">Game Of Life</h3>
+    <br>
+    <tbody id="gridUI">
+
+    </tbody>
+</table>
+
+</div>
+<script src="scopeGOL.js"></script>
+<script src="createGrid.js"></script>
+<script src="cellsArrayInit.js"></script>
+<script src="gridUI.js"></script>
+<script src="cellClickEventListener.js"></script>
+<script src="playCode.js"></script>
+
+</body>
+</html>
