@@ -24,7 +24,7 @@ class Game {
     }
 
     copyArrayByValue(oldArray, newCreatedArray) {
-        console.log('hey');
+        
         for (var i = 0; i < oldArray.length; i++) {
             newCreatedArray[i] = oldArray[i].slice();
         }
@@ -55,7 +55,7 @@ class Game {
     logic(rows,cols,cellsArray) {
         
         var newCellsArray = [];
-        console.log(this);
+
         var newCellsArray = this.copyArrayByValue(cellsArray,newCellsArray)
         
         for (let row=0; row < rows; row+=1) {
