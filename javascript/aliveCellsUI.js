@@ -1,18 +1,18 @@
-window.GOL.AliveCellsUI = (function(){
+window.GOL.AliveCellsUI = (function () {
 
     function aliveCellsUI(indexOfCurrentGame, cellsArray) {
-    
+
         var currentGame = document.getElementById(indexOfCurrentGame);
         var rows = cellsArray.length;
         var cols = cellsArray[0].length;
 
         // Visualize alive cells
-        for (let row=0; row < rows; row+=1) {
-            for (let col=0; col < cols; col+=1) {
+        for (let row = 0; row < rows; row += 1) {
+            for (let col = 0; col < cols; col += 1) {
 
-                let positionOfTd = row*cols + col;
+                let positionOfTd = row * cols + col;
 
-                if (cellsArray[row][col] === true){
+                if (cellsArray[row][col] === true) {
                     currentGame.getElementsByClassName('gridCol')[positionOfTd].style.backgroundColor = '#0069D9';
                 }
                 else {
@@ -20,12 +20,12 @@ window.GOL.AliveCellsUI = (function(){
                 }
             }
         }
-        
+
     }
 
     return {
         init: aliveCellsUI
     }
-    
+
 
 })();

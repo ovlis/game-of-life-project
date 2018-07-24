@@ -1,18 +1,18 @@
 class Game {
     constructor(rows, cols) {
-        this.cellsArray = this.cellsArrayInit( rows, cols );
+        this.cellsArray = this.cellsArrayInit(rows, cols);
     }
 
     cellsArrayInit(rows, cols) {
 
         var cellsArray = [];
 
-        for (let row=0; row < rows; row+=1){
+        for (let row = 0; row < rows; row += 1) {
             cellsArray.push(new Array(cols));
         }
 
-        for (let row=0; row < rows; row+=1) {
-            for (let cell=0; cell < cols; cell+=1) {
+        for (let row = 0; row < rows; row += 1) {
+            for (let cell = 0; cell < cols; cell += 1) {
                 cellsArray[row][cell] = false;
             }
         }
@@ -21,7 +21,7 @@ class Game {
     }
 
     copyArrayByValue(oldArray, newCreatedArray) {
-        
+
         for (var i = 0; i < oldArray.length; i++) {
             newCreatedArray[i] = oldArray[i].slice();
         }
@@ -33,7 +33,7 @@ class Game {
     configureCellState(oldCell, aliveNeighbors) {
 
         var newCell;
-        
+
         if (aliveNeighbors < 2) {
             newCell = false;
         }
@@ -52,54 +52,54 @@ class Game {
     }
 
     next(cellsArray) {
-        
+
         var rows = cellsArray.length;
         var cols = cellsArray[0].length;
         var newCellsArray = [];
 
-        var newCellsArray = this.copyArrayByValue(cellsArray,newCellsArray)
-        
-        for (let row=0; row < rows; row+=1) {
-            for (let col=0; col < cols; col+=1) {
+        var newCellsArray = this.copyArrayByValue(cellsArray, newCellsArray)
+
+        for (let row = 0; row < rows; row += 1) {
+            for (let col = 0; col < cols; col += 1) {
 
                 var aliveNeighbors = 0;
 
-                if (cellsArray[row][col+1] === true) {
+                if (cellsArray[row][col + 1] === true) {
                     aliveNeighbors += 1;
                 }
-                
-                if (cellsArray[row][col-1] === true) {
+
+                if (cellsArray[row][col - 1] === true) {
                     aliveNeighbors += 1;
                 }
-                
-                if (cellsArray[row-1]!== undefined) {
 
-                    if (cellsArray[row-1][col-1] === true) {
-                        aliveNeighbors += 1;
-                    }
-                    
-                    if (cellsArray[row-1][col+1] === true) {
+                if (cellsArray[row - 1] !== undefined) {
+
+                    if (cellsArray[row - 1][col - 1] === true) {
                         aliveNeighbors += 1;
                     }
 
-                    if (cellsArray[row-1][col] === true) {
+                    if (cellsArray[row - 1][col + 1] === true) {
+                        aliveNeighbors += 1;
+                    }
+
+                    if (cellsArray[row - 1][col] === true) {
                         aliveNeighbors += 1;
                     }
 
                 }
-                
 
-                if (cellsArray[row+1]!== undefined) {
 
-                    if (cellsArray[row+1][col-1] === true) {
-                        aliveNeighbors += 1;
-                    }
-                    
-                    if (cellsArray[row+1][col+1] === true) {
+                if (cellsArray[row + 1] !== undefined) {
+
+                    if (cellsArray[row + 1][col - 1] === true) {
                         aliveNeighbors += 1;
                     }
 
-                    if (cellsArray[row+1][col] === true) {
+                    if (cellsArray[row + 1][col + 1] === true) {
+                        aliveNeighbors += 1;
+                    }
+
+                    if (cellsArray[row + 1][col] === true) {
                         aliveNeighbors += 1;
                     }
 
@@ -120,9 +120,9 @@ class Game {
         var rows = cellsArray.length;
         var cols = cellsArray[0].length;
         var escapeLoop = true;
-        
+
         for (let row = 0; row < rows; row += 1) {
-            for (let col=0; col< cols; col += 1) {
+            for (let col = 0; col < cols; col += 1) {
                 if (cellsArray[row][col] !== newCellsArray[row][col]) {
                     escapeLoop = false;
                 }

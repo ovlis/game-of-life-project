@@ -1,4 +1,4 @@
-window.GOL.Home = (function(){
+window.GOL.Home = (function () {
 
     var gamesArray = [];
     document.getElementById('createGrid').addEventListener('click', gridInit);
@@ -6,7 +6,7 @@ window.GOL.Home = (function(){
     function gridInit() {
 
         var rows = document.getElementById('rowInput').value;
-        var cols =  document.getElementById('colInput').value;
+        var cols = document.getElementById('colInput').value;
 
         var game = new Game(rows, cols);
         gamesArray.push(game);
@@ -22,24 +22,24 @@ window.GOL.Home = (function(){
             document.getElementById(indexOfCurrentGame).querySelector('.hideGridstatus').classList.add('hideGrid');
             var cellsArray = game.copyArrayByValue(gamesArray[indexOfCurrentGame].cellsArray, []);
 
-            gamesArray[indexOfCurrentGame].loopID = 
-            setInterval(
-                function() {
-                    var oldCellsArray = game.copyArrayByValue(cellsArray, []);
+            gamesArray[indexOfCurrentGame].loopID =
+                setInterval(
+                    function () {
+                        var oldCellsArray = game.copyArrayByValue(cellsArray, []);
 
-                    if (game.compareArrays(oldCellsArray, game.next(cellsArray))) {
-                        clearInterval(gamesArray[indexOfCurrentGame].loopID);
-                        document.getElementById(indexOfCurrentGame).querySelector('.playBtn').classList.remove('btn-success');
-                        document.getElementById(indexOfCurrentGame).querySelector('.playBtn').textContent = 'Ended';
-                        console.log('heyyy');
+                        if (game.compareArrays(oldCellsArray, game.next(cellsArray))) {
+                            clearInterval(gamesArray[indexOfCurrentGame].loopID);
+                            document.getElementById(indexOfCurrentGame).querySelector('.playBtn').classList.remove('btn-success');
+                            document.getElementById(indexOfCurrentGame).querySelector('.playBtn').textContent = 'Ended';
+                            console.log('heyyy');
+                        }
+                        else {
+                            cellsArray = oldCellsArray;
+                            cellsArray = game.next(cellsArray);
+                            GOL.AliveCellsUI.init(indexOfCurrentGame, cellsArray);
+                        }
                     }
-                    else {
-                        cellsArray = oldCellsArray;
-                        cellsArray = game.next(cellsArray);
-                        GOL.AliveCellsUI.init(indexOfCurrentGame, cellsArray);
-                    }
-                }
-            ,500)
+                    , 500)
         }
 
     }

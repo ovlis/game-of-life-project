@@ -1,6 +1,6 @@
-window.GOL.GridUI = (function(){
-    
-    function gridUI (gamesArray, indexOfCurrentGame) {
+window.GOL.GridUI = (function () {
+
+    function gridUI(gamesArray, indexOfCurrentGame) {
 
         var gameCellsArray = gamesArray[indexOfCurrentGame].cellsArray;
         var rows = gameCellsArray.length;
@@ -21,14 +21,14 @@ window.GOL.GridUI = (function(){
         for (let row = 0; row < rows; row += 1) {
             let gridRow = document.createElement('tr');
             gridRow.setAttribute('class', 'gridRow');
-            
+
             for (let col = 0; col < cols; col += 1) {
                 let gridCol = document.createElement('td');
                 gridCol.setAttribute('class', 'gridCol');
                 gridCol.setAttribute('data-row', row);
                 gridCol.setAttribute('data-col', col);
                 gridCol.style.backgroundColor = 'white';
-                gridCol.addEventListener('click', GOL.CellClickEventListener.init.bind(null, gameCellsArray) )
+                gridCol.addEventListener('click', GOL.CellClickEventListener.init.bind(null, gameCellsArray))
                 gridRow.appendChild(gridCol);
             }
             gridBody.appendChild(gridRow);
@@ -54,5 +54,5 @@ window.GOL.GridUI = (function(){
     return {
         init: gridUI
     }
-    
+
 })();
