@@ -12,47 +12,37 @@
 
 <div class="container">
 
-<h3 class="gameTitle">Game Of Life</h3>
+    <h3 class="gameTitle">Game Of Life</h3>
 
-<div class="inputsContainer form-group">
-    <div class="inputRows">
-        <label>Rows: </label>
-        <input type="number" class="form-control" id="rowInput">
+    <div class="inputsContainer form-group">
+        <div class="inputRows">
+            <label>Rows: </label>
+            <input type="number" class="form-control" id="rowInput">
+        </div>
+        <div class="inputCols form-group">
+            <label>Cols: </label>
+            <input type="number" class="form-control" id="colInput">
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" id="createGrid">Create Grid</button>
+        </div>
+        
     </div>
-    <div class="inputCols form-group">
-        <label>Cols: </label>
-        <input type="number" class="form-control" id="colInput">
+
+    <div class="clear"></div>
+
+    <!-- grid -->
+    <div class="allGames">
+        
     </div>
-    <div class="form-group">
-        <button type="button" class="btn btn-primary" id="createGrid">Create Grid</button>
-        <!-- <button type="button" class="btn btn-success" id="play" disabled>Play</button> -->
-    </div>
-    
-</div>
-
-<div class="clear">
 
 </div>
 
-<!-- grid -->
-<div class="allGames">
-    
-</div>
-<!-- <table class="gameGridUI">
-    <tbody id="gridUI">
-
-    </tbody>
-</table> -->
-
-</div>
-
-<script src="libraries/handlebars-v4.0.11.js"></script>
 <script src="javascript/scopeGOL.js"></script>
 <script src="javascript/gameClass.js"></script>
 <script src="javascript/aliveCellsUI.js"></script>
 <script src="javascript/gridUI.js"></script>
 <script src="javascript/cellClickEventListener.js"></script>
-<script src="javascript/eachGameTable.js"></script>
 <script src="javascript/home.js"></script>
 
 </body>

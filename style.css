@@ -51,31 +51,47 @@
     text-align: center;
 }
 
-.gameGridUI {
+.eachGame {
+    margin-top: 50px;
+    position: relative;
+}
+
+.eachGameGrid {
+    position: relative;
+}
+
+.eachGameGrid {
     margin: 0 auto;
 }
 
-.eachGame {
-    margin: 50px auto;
-}
-
-.colUI {
+.gridCol {
     border: gray 1px solid;
     width: 50px;
     height: 40px;
 }
 
-.colUI:hover {
+.gridCol:hover {
     box-shadow: 0px 0px 1px 1px #0069D9; 
 }
 
-.btn-success {
+.playBtn {
     height: 30px;
-    padding: 0px 20px 0px 20px;
+    padding: 0px 40px 0px 40px;
     display: block;
-    margin: 5px auto;
+    margin: 10px auto;
 }
 
 hr {
-    width: 40%;
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+.hideGrid {
+    height: 100%;
+    background-color: red;
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    width: 100%;
 }

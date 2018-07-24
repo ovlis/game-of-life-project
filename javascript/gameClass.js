@@ -1,8 +1,6 @@
 class Game {
     constructor(rows, cols) {
-        this.rows = rows;
-        this.cols = cols;
-        this.cellsArray = this.cellsArrayInit(this.rows, this.cols);
+        this.cellsArray = this.cellsArrayInit( rows, cols );
     }
 
     cellsArrayInit(rows, cols) {
@@ -18,7 +16,6 @@ class Game {
                 cellsArray[row][cell] = false;
             }
         }
-
         return cellsArray;
 
     }
@@ -33,8 +30,10 @@ class Game {
 
     }
 
-    configureCellState(oldCell, newCell, aliveNeighbors) {
+    configureCellState(oldCell, aliveNeighbors) {
 
+        var newCell;
+        
         if (aliveNeighbors < 2) {
             newCell = false;
         }
@@ -52,8 +51,10 @@ class Game {
 
     }
 
-    logic(rows,cols,cellsArray) {
+    next(cellsArray) {
         
+        var rows = cellsArray.length;
+        var cols = cellsArray[0].length;
         var newCellsArray = [];
 
         var newCellsArray = this.copyArrayByValue(cellsArray,newCellsArray)
@@ -104,15 +105,31 @@ class Game {
 
                 }
 
-                var cellState = this.configureCellState(cellsArray[row][col], newCellsArray[row][col], aliveNeighbors);
+                var cellState = this.configureCellState(cellsArray[row][col], aliveNeighbors);
                 newCellsArray[row][col] = cellState;
 
             }
         }
 
         this.cellsArray = this.copyArrayByValue(newCellsArray, cellsArray);
-        GOL.AliveCellsUI.init(rows,cols, cellsArray)
 
+        return this.cellsArray;
+    }
+
+    compareArrays(cellsArray, newCellsArray) {
+        var rows = cellsArray.length;
+        var cols = cellsArray[0].length;
+        var escapeLoop = true;
+        
+        for (let row = 0; row < rows; row += 1) {
+            for (let col=0; col< cols; col += 1) {
+                if (cellsArray[row][col] !== newCellsArray[row][col]) {
+                    escapeLoop = false;
+                }
+            }
+        }
+
+        return escapeLoop
     }
 
 }

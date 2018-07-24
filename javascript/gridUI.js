@@ -1,31 +1,53 @@
 window.GOL.GridUI = (function(){
     
-    function gridUI (game, rows,cols) {
+    function gridUI (gamesArray, indexOfCurrentGame) {
 
-        var eachGrid = document.createElement('div');
-        eachGrid.setAttribute('class','eachGrid');
+        var gameCellsArray = gamesArray[indexOfCurrentGame].cellsArray;
+        var rows = gameCellsArray.length;
+        var cols = gameCellsArray[0].length;
 
+        var eachGame = document.createElement('div');
+        eachGame.setAttribute('class', 'eachGame');
+        eachGame.setAttribute('id', indexOfCurrentGame);
 
-        for ( let row=0; row<rows; row+=1) {
-            let rowUI = document.createElement('tr')
-            rowUI.setAttribute('class','rowUI');
+        var hr = document.createElement('hr');
 
-            for (let col=0; col<cols; col+=1) {
-                let colUI = document.createElement('td');
-                colUI.setAttribute('class','colUI');
-                colUI.setAttribute('style', 'background-color: white');
-                colUI.setAttribute('data-row',row);
-                colUI.setAttribute('data-col',col);
-                colUI.addEventListener('click',GOL.CellClickEventListener.init.bind(game,game));
-                rowUI.appendChild(colUI);
-            }
+        var eachGameGrid = document.createElement('table');
+        eachGameGrid.setAttribute('class', 'eachGameGrid');
+
+        var gridBody = document.createElement('tbody');
+        gridBody.setAttribute('class', 'gridBody');
+
+        for (let row = 0; row < rows; row += 1) {
+            let gridRow = document.createElement('tr');
+            gridRow.setAttribute('class', 'gridRow');
             
-            eachGrid.appendChild(rowUI);
+            for (let col = 0; col < cols; col += 1) {
+                let gridCol = document.createElement('td');
+                gridCol.setAttribute('class', 'gridCol');
+                gridCol.setAttribute('data-row', row);
+                gridCol.setAttribute('data-col', col);
+                gridCol.style.backgroundColor = 'white';
+                gridCol.addEventListener('click', GOL.CellClickEventListener.init.bind(null, gameCellsArray) )
+                gridRow.appendChild(gridCol);
+            }
+            gridBody.appendChild(gridRow);
         }
 
-        GOL.EachGameTable.init();
-        var lastTableBody = document.getElementsByClassName('bodyGridUI')[document.getElementsByClassName('bodyGridUI').length - 1];
-        lastTableBody.appendChild(eachGrid);
+        var playButton = document.createElement('button');
+        playButton.setAttribute('class', 'btn btn-success playBtn');
+        playButton.textContent = 'Play';
+
+        eachGameGrid.appendChild(gridBody);
+        eachGame.appendChild(hr);
+        eachGame.appendChild(eachGameGrid);
+        eachGame.appendChild(playButton)
+        document.querySelector('.allGames').appendChild(eachGame);
+
+        // Hide Table
+        var hideGrid = document.createElement('div');
+        hideGrid.setAttribute('class', 'hideGridstatus');
+        document.getElementById(indexOfCurrentGame).querySelector('.eachGameGrid').appendChild(hideGrid);
 
     }
 

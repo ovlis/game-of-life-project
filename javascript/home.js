@@ -1,5 +1,6 @@
 window.GOL.Home = (function(){
 
+    var gamesArray = [];
     document.getElementById('createGrid').addEventListener('click', gridInit);
 
     function gridInit() {
@@ -8,18 +9,37 @@ window.GOL.Home = (function(){
         var cols =  document.getElementById('colInput').value;
 
         var game = new Game(rows, cols);
-        console.log(game);
+        gamesArray.push(game);
+        var indexOfCurrentGame = gamesArray.indexOf(game);
 
-        GOL.GridUI.init(game, rows, cols);
+        GOL.GridUI.init(gamesArray, indexOfCurrentGame);
 
-        document.getElementById('play').addEventListener('click', playEventListener);
+        var playBtn = document.getElementById(indexOfCurrentGame).querySelector('.playBtn');
+        playBtn.addEventListener('click', playEventListener);
 
         function playEventListener(e) {
             e.target.disabled = true;
-            var play = game.logic.bind(game,rows, cols, game.cellsArray);
+            document.getElementById(indexOfCurrentGame).querySelector('.hideGridstatus').classList.add('hideGrid');
+            var cellsArray = game.copyArrayByValue(gamesArray[indexOfCurrentGame].cellsArray, []);
 
-            game.id = setInterval(play, 500);
-            console.log(game);
+            gamesArray[indexOfCurrentGame].loopID = 
+            setInterval(
+                function() {
+                    var oldCellsArray = game.copyArrayByValue(cellsArray, []);
+
+                    if (game.compareArrays(oldCellsArray, game.next(cellsArray))) {
+                        clearInterval(gamesArray[indexOfCurrentGame].loopID);
+                        document.getElementById(indexOfCurrentGame).querySelector('.playBtn').classList.remove('btn-success');
+                        document.getElementById(indexOfCurrentGame).querySelector('.playBtn').textContent = 'Ended';
+                        console.log('heyyy');
+                    }
+                    else {
+                        cellsArray = oldCellsArray;
+                        cellsArray = game.next(cellsArray);
+                        GOL.AliveCellsUI.init(indexOfCurrentGame, cellsArray);
+                    }
+                }
+            ,500)
         }
 
     }

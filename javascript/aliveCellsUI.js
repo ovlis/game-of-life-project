@@ -1,6 +1,10 @@
 window.GOL.AliveCellsUI = (function(){
 
-    function aliveCellsUI(rows, cols, cellsArray) {
+    function aliveCellsUI(indexOfCurrentGame, cellsArray) {
+    
+        var currentGame = document.getElementById(indexOfCurrentGame);
+        var rows = cellsArray.length;
+        var cols = cellsArray[0].length;
 
         // Visualize alive cells
         for (let row=0; row < rows; row+=1) {
@@ -9,10 +13,10 @@ window.GOL.AliveCellsUI = (function(){
                 let positionOfTd = row*cols + col;
 
                 if (cellsArray[row][col] === true){
-                    document.getElementsByClassName('colUI')[positionOfTd].style.backgroundColor = '#0069D9';
+                    currentGame.getElementsByClassName('gridCol')[positionOfTd].style.backgroundColor = '#0069D9';
                 }
                 else {
-                    document.getElementsByClassName('colUI')[positionOfTd].style.backgroundColor = 'white';
+                    currentGame.getElementsByClassName('gridCol')[positionOfTd].style.backgroundColor = 'white';
                 }
             }
         }
