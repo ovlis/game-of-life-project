@@ -1,10 +1,9 @@
 window.GOL.GridUI = (function () {
 
-    function gridUI(gamesArray, indexOfCurrentGame) {
+    function gridUI(cellsArray, indexOfCurrentGame) {
 
-        var gameCellsArray = gamesArray[indexOfCurrentGame].cellsArray;
-        var rows = gameCellsArray.length;
-        var cols = gameCellsArray[0].length;
+        var rows = cellsArray.length;
+        var cols = cellsArray[0].length;
 
         var eachGame = document.createElement('div');
         eachGame.setAttribute('class', 'eachGame');
@@ -28,7 +27,7 @@ window.GOL.GridUI = (function () {
                 gridCol.setAttribute('data-row', row);
                 gridCol.setAttribute('data-col', col);
                 gridCol.style.backgroundColor = 'white';
-                gridCol.addEventListener('click', GOL.CellClickEventListener.init.bind(null, gameCellsArray))
+                gridCol.addEventListener('click', GOL.CellClickEventListener.init.bind(null, cellsArray))
                 gridRow.appendChild(gridCol);
             }
             gridBody.appendChild(gridRow);

@@ -1,8 +1,9 @@
 window.GOL.AliveCellsUI = (function () {
 
-    function aliveCellsUI(indexOfCurrentGame, cellsArray) {
+    function aliveCellsUI(indexOfCurrentGame, game) {
 
         var currentGame = document.getElementById(indexOfCurrentGame);
+        var cellsArray = game.cellsArray;
         var rows = cellsArray.length;
         var cols = cellsArray[0].length;
 
@@ -20,12 +21,9 @@ window.GOL.AliveCellsUI = (function () {
                 }
             }
         }
-
     }
-
     return {
         init: aliveCellsUI
     }
-
-
+    
 })();
