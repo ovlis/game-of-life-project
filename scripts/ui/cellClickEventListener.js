@@ -1,7 +1,6 @@
 window.GOL.CellClickEventListener = (function () {
 
     function cellClickEventListener(cellsArray, e) {
-
         var clickedRow = (e.target).getAttribute('data-row');
         var clickedCol = (e.target).getAttribute('data-col');
 
@@ -14,7 +13,7 @@ window.GOL.CellClickEventListener = (function () {
             cellsArray[clickedRow][clickedCol] = false;
         }
     }
-
+    
     return {
         init: cellClickEventListener
     }

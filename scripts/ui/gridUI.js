@@ -1,7 +1,6 @@
 window.GOL.GridUI = (function () {
 
     function gridUI(cellsArray, indexOfCurrentGame) {
-
         var rows = cellsArray.length;
         var cols = cellsArray[0].length;
 
@@ -32,7 +31,6 @@ window.GOL.GridUI = (function () {
             }
             gridBody.appendChild(gridRow);
         }
-
         var playButton = document.createElement('button');
         playButton.setAttribute('class', 'btn btn-success playBtn');
         playButton.textContent = 'Play';
@@ -47,7 +45,6 @@ window.GOL.GridUI = (function () {
         var hideGrid = document.createElement('div');
         hideGrid.setAttribute('class', 'hideGridstatus');
         document.getElementById(indexOfCurrentGame).querySelector('.eachGameGrid').appendChild(hideGrid);
-
     }
 
     return {
