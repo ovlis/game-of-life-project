@@ -1,4 +1,4 @@
-window.GOL.Home = (function () {
+window.GOL.Home = (function() {
     document.getElementById('createGrid').addEventListener('click', gridInit);
 
     function gridInit() {
@@ -7,35 +7,31 @@ window.GOL.Home = (function () {
 
         var game = new Game(rows, cols);
         var indexOfCurrentGame = window.GOL.indexOfCurrentGame++;
-        GOL.GridUI.init(game.cellsArray, indexOfCurrentGame);
+        GOL.InitializeGrid.init(game.cellsArray, indexOfCurrentGame);
 
         var playBtn = document.getElementById(indexOfCurrentGame).querySelector('.playBtn');
         playBtn.addEventListener('click', playEventListener);
 
         function playEventListener(e) {
             e.target.disabled = true;
-            document.getElementById(indexOfCurrentGame).querySelector('.hideGridstatus').classList.add('hideGrid');
+            document
+                .getElementById(indexOfCurrentGame)
+                .querySelector('.hideGridstatus')
+                .classList.add('hideGrid');
 
-            game.loopID =
-                setInterval(
-                    function () {
-                        var oldCellsArray = game.copyArrayByValue(game.cellsArray);
-                        game.next();
-                        var newCellsArray = game.copyArrayByValue(game.cellsArray);
+            game.loopID = setInterval(function() {
+                var oldCellsArray = game.copyArrayByValue(game.cellsArray);
+                game.next();
+                var newCellsArray = game.copyArrayByValue(game.cellsArray);
 
-                        if (game.compareArrays(oldCellsArray, newCellsArray)) {
-                            clearInterval(game.loopID);
-                            playBtn.classList.remove('btn-success');
-                            playBtn.textContent = 'Ended';
-                        }
-                        else {
-                            GOL.AliveCellsUI.init(indexOfCurrentGame, game);
-                        }
-                    }
-                    , 500)
+                if (game.compareArrays(oldCellsArray, newCellsArray)) {
+                    clearInterval(game.loopID);
+                    playBtn.classList.remove('btn-success');
+                    playBtn.textContent = 'Ended';
+                } else {
+                    GOL.OnPlayCells.init(indexOfCurrentGame, game);
+                }
+            }, 500);
         }
-
     }
-
-
 })();

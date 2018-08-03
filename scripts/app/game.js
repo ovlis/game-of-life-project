@@ -19,12 +19,7 @@ class Game {
     }
 
     copyArrayByValue(oldArray) {
-        var newCreatedArray = [];
-
-        for (var i = 0; i < oldArray.length; i++) {
-            newCreatedArray[i] = oldArray[i].slice();
-        }
-        return newCreatedArray;
+        return oldArray.map(row => row.slice());
     }
 
     configureCellState(oldCell, aliveNeighbors) {
@@ -32,11 +27,9 @@ class Game {
 
         if ((aliveNeighbors === 2 || aliveNeighbors === 3) && oldCell) {
             newCell = true;
-        }
-        else if (aliveNeighbors === 3 && !oldCell) {
+        } else if (aliveNeighbors === 3 && !oldCell) {
             newCell = true;
-        }
-        else {
+        } else {
             newCell = false;
         }
         return newCell;
@@ -99,6 +92,6 @@ class Game {
                 }
             }
         }
-        return escapeLoop
+        return escapeLoop;
     }
 }

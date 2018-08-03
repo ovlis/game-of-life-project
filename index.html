@@ -40,11 +40,15 @@
 
     </div>
 
-    <script src="scripts/app/scopeGOL.js"></script>
-    <script src="scripts/app/gameClass.js"></script>
-    <script src="scripts/ui/aliveCellsUI.js"></script>
-    <script src="scripts/ui/gridUI.js"></script>
-    <script src="scripts/ui/cellClickEventListener.js"></script>
+    <script>
+        window.GOL = {
+            indexOfCurrentGame: 0
+        };
+    </script>
+    <script src="scripts/app/game.js"></script>
+    <script src="scripts/ui/onPlayCells.js"></script>
+    <script src="scripts/ui/initializeGrid.js"></script>
+    <script src="scripts/ui/userToggleCells.js"></script>
     <script src="scripts/app/home.js"></script>
 
 </body>
